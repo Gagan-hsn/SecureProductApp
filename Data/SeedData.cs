@@ -9,17 +9,17 @@ namespace SecureProductApp.Data
     {
         public static async Task Initialize(IServiceProvider serviceProvider)
         {
-            // Create a scope to get scoped services like DbContext and RoleManager
+          
             using var scope = serviceProvider.CreateScope();
             var services = scope.ServiceProvider;
 
             var context = services.GetRequiredService<ApplicationDbContext>();
             var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
-            // Apply migrations to ensure database and tables exist
+          
             await context.Database.MigrateAsync();
 
-            // Seed roles
+           
             string[] roles = new[] { "Admin", "Manager" };
             foreach (var roleName in roles)
             {
@@ -29,7 +29,7 @@ namespace SecureProductApp.Data
                 }
             }
 
-            // Optional: Seed an admin user
+           
             var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
             string adminEmail = "admin@example.com";
             string adminPassword = "Admin@123";
@@ -48,3 +48,4 @@ namespace SecureProductApp.Data
         }
     }
 }
+
