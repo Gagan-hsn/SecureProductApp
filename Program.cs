@@ -4,23 +4,23 @@ using SecureProductApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
+
 builder.Services.AddControllersWithViews();
 
-// Configure EF Core with SQL Server
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// ✅ Register Identity services
+
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
-    options.SignIn.RequireConfirmedAccount = false; // set to true if you want email confirmation
+    options.SignIn.RequireConfirmedAccount = false; 
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -32,7 +32,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// ✅ Identity requires authentication/authorization middlewares
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -41,3 +41,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
