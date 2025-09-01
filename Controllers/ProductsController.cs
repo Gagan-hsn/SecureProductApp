@@ -13,20 +13,20 @@ namespace SecureProductApp.Controllers
             _context = context;
         }
 
-        // GET: /Products
+        
         public IActionResult Index()
         {
             var products = _context.Products.ToList();
             return View(products);
         }
 
-        // GET: /Products/Create
+      
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: /Products/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(ProductViewModel model)
@@ -48,7 +48,7 @@ namespace SecureProductApp.Controllers
             return View(model);
         }
 
-        // GET: /Products/Edit/5
+       
         public IActionResult Edit(int id)
         {
             var product = _context.Products.Find(id);
@@ -64,7 +64,7 @@ namespace SecureProductApp.Controllers
             return View(model);
         }
 
-        // POST: /Products/Edit/5
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, ProductViewModel model)
@@ -86,7 +86,7 @@ namespace SecureProductApp.Controllers
             return View(model);
         }
 
-        // GET: /Products/Delete/5
+       
         public IActionResult Delete(int id)
         {
             var product = _context.Products.Find(id);
@@ -95,7 +95,7 @@ namespace SecureProductApp.Controllers
             return View(product);
         }
 
-        // POST: /Products/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
@@ -110,3 +110,4 @@ namespace SecureProductApp.Controllers
         }
     }
 }
+
