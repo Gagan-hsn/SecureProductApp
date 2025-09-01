@@ -15,7 +15,7 @@ public class AccountController : Controller
         _signInManager = signInManager;
     }
 
-    // Register
+    
     [HttpGet]
     public IActionResult Register() => View();
 
@@ -30,7 +30,7 @@ public class AccountController : Controller
 
         if (result.Succeeded)
         {
-            await _userManager.AddToRoleAsync(user, "Manager"); // default role
+            await _userManager.AddToRoleAsync(user, "Manager"); 
             await _signInManager.SignInAsync(user, false);
             return RedirectToAction("Index", "Home");
         }
@@ -39,7 +39,7 @@ public class AccountController : Controller
         return View(model);
     }
 
-    // Login
+   
     [HttpGet]
     public IActionResult Login() => View();
 
@@ -56,7 +56,7 @@ public class AccountController : Controller
         return View(model);
     }
 
-    // Logout
+   
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()
@@ -65,3 +65,4 @@ public class AccountController : Controller
         return RedirectToAction("Index", "Home");
     }
 }
+
